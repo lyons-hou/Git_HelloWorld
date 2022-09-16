@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ADLINK BIOS Release Website</title>
+</head>
+<body>
+<Center>
+    <h1>ADLINK BIOS Package Download Center</h1>
+    <form method="GET" enctype="multipart/form-data" >
+
+BU:
+<select name="BU" id="id_BU" onchange="this.form.submit()">
+{% for BUList in BU %}
+<option value="{{BUList.id}}" {% if BU_URL == BUList.id %}selected{% endif %}>{{BUList.Business_Group}}</option>
+{% endfor %}
+</select>
+
+Family:
+<select name="Family" id="id_Family" onchange="this.form.submit()">
+<option value="0" selected>Select..</option>
+{% for FamilyList in Family %}
+<option value="{{FamilyList.Product_Family_id}}"{% if Family_URL == FamilyList.Product_Family_id %}selected{% endif %}>{{FamilyList.Product_Family}}</option>
+{% endfor %}
+</select>
+
+Product:
+<select name="Product" id="id_Product" onchange="this.form.submit()">
+<option value="0" selected>Select..</option>
+{% for ProductList in Product %}
+<option value="{{ProductList.ProductName}}"{% ifequal Product_URL ProductList.ProductName %}selected{% endifequal %}>{{ProductList.ProductName}}</option>
+{% endfor %}
+</select>
+
+Customer:
+<select name="Customer" id="id_Customer" onchange="this.form.submit()">
+<option value="0" selected>Select..</option>
+{% for CustomerList in Customer %}
+<option value="{{CustomerList.CustomerName}}"{% ifequal Customer_URL CustomerList.CustomerName %}selected{% endifequal %}>{{CustomerList.CustomerName}}</option>
+{% endfor %}
+</select>
+
+    </form>
+
+<table id="result_list", border=3, width="80%">
+<thead>
+<tr align=center>  
+   <td style="background-color:blue;color:white"><span>ProductName</td>
+   <td style="background-color:blue;color:white"><span>Owner</td>
+   <td style="background-color:blue;color:white"><span>CustomerName</td>
+   <td style="background-color:blue;color:white"><span>Version</td>
+   <td style="background-color:blue;color:white"><span>Type</td>
+   <td style="background-color:blue;color:white"><span>ReleaseTime</td>   
+</tr>
+</thead>
+<tbody>
+{% for BiosData in BiosList %}
+<tr align=center bgcolor="#ffffff" onmouseover="this.style.backgroundColor='#eff39a';" onMouseOut="this.style.backgroundColor='#ffffff';">
+    <td>{{BiosData.ProductName}}</td>
+    <td>{{BiosData.OwnerName}}</td>
+    <td>{{BiosData.CustomerName}}</td>
+    <td><a href='../../../BiosDownload/?ProductName={{BiosData.ProductName}}&Version={{BiosData.Version}}&PackageType={{BiosData.PackageType}}' download>{{BiosData.Version}}</a></td>
+    <td>{{BiosData.PackageType}}</td>
+    <td>{{BiosData.ReleaseTime}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</center>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head></head>
+<body>
+
+<b>Hi {{Email_Owner}},</b><p>
+We have received the formal release BIOS package from you.<br>
+Please refer below information for detail.<br>
+<p>
+<a href="\\adlink-fs1\SEC\SEC-BDD\BIOS_FS\Jenkins_Release\{{Email_ProductName}}\{{Email_CustomerName}}\{{Email_Version}}">Jenkins Auto-Release Folder</a>
+<p>
+<table border=3 width="480">
+<tr>
+ <td align="center" style="background-color:blue;color:white" width="160"><b>Product Name</b></td>
+ <td align="center" width="320">{{Email_ProductName}}</td>
+</tr>
+<tr>
+ <td align="center" style="background-color:blue;color:white"><b>Customer Name</b></td>
+ <td align="center">{{Email_CustomerName}}</td>
+</tr>
+<tr>
+ <td align="center" style="background-color:blue;color:white"><b>BIOS Version</b></td>
+ <td align="center">{{Email_Version}}</td>
+</tr>
+<tr>
+ <td align="center" style="background-color:blue;color:white"><b>Package Type</b></td>
+ <td align="center">{{Email_Type}}</td>
+</tr>
+<tr>
+ <td align="center" style="background-color:blue;color:white"><b>Download Link</b></td>
+ <td align="center"><a href="{{Email_DownloadLink}}">Download</a></td>
+</tr>
+<tr>
+ <td colspan="2">
+<pre>
+{% autoescape off %}{{Email_History}}{% endautoescape %}
+</pre>
+ </td>
+</tr>
+</table>
+<p>
+Sincerely,<br>
+ADLINK TPDC-SEC-BIOS Team<br>
+
+</body>
+</html>
+
